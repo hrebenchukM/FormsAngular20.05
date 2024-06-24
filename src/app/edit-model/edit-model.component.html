@@ -1,0 +1,26 @@
+<div>
+  <p>
+      <label>Имя пользователя</label><br>
+      <input name="name" [(ngModel)]="user.name" #userName="ngModel"/>
+  </p>
+  <p>
+      <label>Возраст</label><br>
+      <input type="number" name="age" [(ngModel)]="user.age" #userAge="ngModel"/>
+  </p>
+  <p>
+      <label>Место работы</label><br>
+      <select name="company" [(ngModel)]="user.company" #userCompany="ngModel">
+      @for(comp of companies; track $index){
+          <option [value]="comp">
+              {{comp}}
+          </option>
+      }
+      </select>
+  </p>
+  <button (click)="logUser(userName, userAge, userCompany)">Логгировать</button>
+</div>
+<div>
+  <p>{{userName.name}} : {{userName.model}}</p>
+  <p>{{userAge.name}} : {{userAge.model}}</p>
+  <p>{{userCompany.name}} : {{userCompany.model}}</p>
+</div>

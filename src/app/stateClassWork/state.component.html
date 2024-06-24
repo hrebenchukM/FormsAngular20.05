@@ -1,0 +1,17 @@
+<div>
+    <div>
+        <label>Email</label><br>
+        <input name="email" type="email" [(ngModel)]="user.email" #email="ngModel" required email />
+    </div>
+    <div>
+        <label>Пароль</label><br>
+        <input  name="password"type="password"  [(ngModel)]="user.password" #password="ngModel" required />
+    </div>
+    <button [disabled]="email.invalid || password.invalid "
+        (click)="addUser()">Отправить</button>
+  </div>
+  
+  
+  <div>
+      <p>{{ user | json }}</p>
+  </div>

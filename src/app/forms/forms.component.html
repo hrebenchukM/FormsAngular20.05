@@ -1,0 +1,17 @@
+<form  #myForm="ngForm" method="post" (ngSubmit)="onSubmit(myForm)">
+  <p>
+      <label>Имя</label><br>
+      <input name="name" ngModel required />
+  </p>
+  <p>
+      <label>Email</label><br>
+      <input name="email" ngModel required email />
+  </p>
+  <p>
+      <label>Телефон</label><br>
+      <input name="phone" ngModel required pattern="[0-9]{10}" />
+  </p>
+  <input type="submit" [disabled]="myForm.invalid" value="Отправить" />
+</form>
+
+

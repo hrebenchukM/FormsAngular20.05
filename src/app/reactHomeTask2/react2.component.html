@@ -1,0 +1,47 @@
+<form [formGroup]="myForm" method="post" novalidate (ngSubmit)="submit()">
+
+  <div>
+      <label>Email</label><br>
+      <input name="email" formControlName="userEmail" />
+
+      @if(myForm.controls["userEmail"].invalid && myForm.controls["userEmail"].touched){
+          <div class="alert">Некорректный email</div>
+      }
+  </div>
+  
+  <div>
+    <label>Пароль</label><br>
+    <input name="name"  formControlName="userPassword" />
+
+    @if(myForm.controls["userPassword"].invalid && myForm.controls["userPassword"].touched){
+        <div class="alert">  Пароль должен быть не менее 11 символов</div>
+    }
+</div>
+
+
+<div>
+    <label>
+      <input type="checkbox" formControlName="agreeTerms" />
+      Я согласен с условиями
+    </label>
+  </div>
+
+  <div formArrayName="hobbies">
+  @for(hobby of getFormsControls()["controls"]; track $index){
+      <div>
+          <label>Хобби</label><br>
+          <input formControlName="{{$index}}" />
+        
+      </div>
+  }
+  </div>
+ 
+
+
+  <button (click)="addHobby()">Добавить хобби</button>
+  <button [disabled]="myForm.invalid">Отправить</button>
+</form>
+
+<div>
+    <p>{{ myForm.value | json }}</p>
+  </div>
